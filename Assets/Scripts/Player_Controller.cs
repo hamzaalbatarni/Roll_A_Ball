@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player_Controller : MonoBehaviour {
-    public float speed ;
+    public float speed;
     private Rigidbody rb;
     void Start()
     {
@@ -18,7 +18,15 @@ public class Player_Controller : MonoBehaviour {
 
 
         rb.AddForce(movement * speed);
-        
-        // ctrl + alt + M then Ctrl + H
+    }
+
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("pickup"))
+            {
+                other.gameObject.SetActive(false);
+
             }
-}
+        }
+    } 
+    // ctrl + alt + M then Ctrl + H
